@@ -1,0 +1,64 @@
+{
+  "name": "signal-react-router",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e7h4n/signal-react-router.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "setTimeout",
+    "setInterval",
+    "delay",
+    "requestAnimationFrame",
+    "AbortController",
+    "AbortSignal",
+    "abortable"
+  ],
+  "scripts": {
+    "prepack": "pnpm run build",
+    "lint": "eslint .",
+    "test": "pnpm vitest",
+    "build": "rollup -c",
+    "coverage": "vitest run --coverage"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "^7.24.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "^22.5.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitest/coverage-v8": "^2.1.1",
+    "eslint": "^9.10.0",
+    "eslint-plugin-vitest": "^0.5.4",
+    "happy-dom": "^15.7.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rollup": "^4.22.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.6.0",
+    "vitest": "^2.1.1"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/signal-react-router.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/signal-react-router.cjs",
+      "import": "./dist/signal-react-router.js"
+    }
+  },
+  "dependencies": {
+    "react-router": "^6.27.0",
+    "react-router-dom": "^6.27.0"
+  }
+}
