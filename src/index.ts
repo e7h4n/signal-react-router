@@ -1,4 +1,4 @@
-import { createBrowserRouter, createMemoryRouter, DataStrategyFunction, DataStrategyMatch, RouteObject } from "react-router-dom";
+import { createBrowserRouter, createMemoryRouter, DataStrategyMatch, RouteObject } from "react-router-dom";
 
 type RouterOptions = Parameters<typeof createBrowserRouter>[1] | Parameters<typeof createMemoryRouter>[1];
 type createRouterArgs = [RouteObject[], RouterOptions];
@@ -67,7 +67,7 @@ export function createSignalRouterDecorator(signal: AbortSignal): RouterDecorato
                             }),
                         {}
                     );
-                } as DataStrategyFunction,
+                },
             }),
         ];
     };
