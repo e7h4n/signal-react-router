@@ -71,10 +71,10 @@ describe("signalRouter", () => {
                 return null;
             },
             children: [{
-                path: "A1B1",
+                path: "A1B2/C1",
                 loader: (_: unknown, ctx) => {
                     (ctx as { signal: AbortSignal }).signal.addEventListener('abort', () => {
-                        traceAbortSignal('A1B1')
+                        traceAbortSignal('A1B2/C1')
                     })
                     return null;
                 }
@@ -87,11 +87,11 @@ describe("signalRouter", () => {
 
         await router.navigate("/A1")
         expect(traceAbortSignal).not.toBeCalled()
-        await router.navigate("/A1/A1B1")
+        await router.navigate("/A1/A1B2/C1")
         expect(traceAbortSignal).not.toBeCalled()
         await router.navigate("/A1/A1B2")
         expect(traceAbortSignal).not.toHaveBeenCalledWith('A1')
-        expect(traceAbortSignal).toHaveBeenCalledWith('A1B1')
+        expect(traceAbortSignal).toHaveBeenCalledWith('A1B2/C1')
     })
 
     it("abort all parent when navigate to another sibling route", async () => {
@@ -111,7 +111,7 @@ describe("signalRouter", () => {
                         traceAbortSignal('A1B1')
                     })
                     return null;
-                }
+                },
             }]
         }, {
             path: "/A2"

@@ -20,7 +20,8 @@
     "lint": "eslint .",
     "test": "pnpm vitest",
     "build": "rollup -c",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "type-check": "tsc --noEmit"
   },
   "engines": {
     "node": ">=10"

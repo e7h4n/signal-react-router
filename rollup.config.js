@@ -21,6 +21,9 @@ const commonConfig = {
     onwarn: (warning) => {
         throw new Error(warning?.message);
     },
+    external: [
+        ...Object.keys(pkg.dependencies ?? {}),
+    ],
 };
 
 /** @type { import('rollup').RollupOptions } */
