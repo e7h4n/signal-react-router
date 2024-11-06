@@ -1,24 +1,18 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render } from "@testing-library/react";
-import { createMemoryRouter, RouteObject, RouterProvider } from "react-router-dom";
-import { createSignalRouterDecorator } from "../";
-import { createElement, StrictMode } from "react";
+import { createMemoryRouter, RouteObject } from "react-router-dom";
+import { createSignalRouterDecorator } from "..";
 
 function renderRoutes(routes: RouteObject[]): { abortController: AbortController, router: ReturnType<typeof createMemoryRouter> } {
     const abortController = new AbortController();
+
     const decorateRoutes = createSignalRouterDecorator(
         abortController.signal
     );
+
     const router = createMemoryRouter(...decorateRoutes(routes, {
         basename: "/",
     }));
 
-    render(
-        createElement(RouterProvider, { router }),
-        {
-            wrapper: StrictMode
-        }
-    );
     return { abortController, router }
 }
 
@@ -26,7 +20,6 @@ describe("signalRouter", () => {
     let rootAbortController: AbortController;
 
     afterEach(() => {
-        cleanup();
         rootAbortController.abort();
     });
 
